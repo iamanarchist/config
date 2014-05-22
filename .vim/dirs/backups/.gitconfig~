@@ -1,9 +1,0 @@
-[user]
-	email = mark@zillians.com
-    name = Mu Chi Sung 
-[alias]
-    st = status
-    ci = commit -v
-    pl = pull
-    ph = push
-    bra = branch
