@@ -1,0 +1,20 @@
+admin,v
+ admin@local.host,v
+  <ul,V
+<,v
+Default admin login for GitLab application:,V
+,V
+service gitlab restart,V
+Then run:,V
+",v
+/,v
+0,v
+                    | DISTINCT_IDENTIFIER(qi::lit(L"int64"))                                         [ typename SA::arg_thor_non_qualified_type::template init_primitive_type<tree::PrimitiveKind::INT64_TYPE>() ],V
+SA,v
+                    | DISTINCT_IDENTIFIER(qi::lit(L"float32"))                                       [ typename SA::arg_thor_non_qualified_type::template init_primitive_type<tree::PrimitiveKind::FLOAT32_TYPE>() ],V
+nnoremap <CR> :noh<CR> ,V
+"This unsets the "last search pattern" register by hitting return,V
+2,v
+" " `s{char}{char} ",V
+" " or,V
+ ,v
