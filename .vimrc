@@ -31,7 +31,7 @@ Bundle 'gmarik/vundle'
 " Plugins from github repos:
 
 " Python and PHP Debugger
-Bundle 'fisadev/vim-debug.vim'
+"Bundle 'fisadev/vim-debug.vim'
 " Better file browser
 Bundle 'scrooloose/nerdtree'
 " Code commenter
@@ -66,7 +66,7 @@ Bundle 'michaeljsmith/vim-indent-object'
 " operators, highlighting, run and ipdb breakpoints)
 Bundle 'klen/python-mode'
 " Better autocompletion
-Bundle 'Shougo/neocomplcache.vim'
+"Bundle 'Shougo/neocomplcache.vim'
 " Snippets manager (SnipMate), dependencies, and snippets repo
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
@@ -87,7 +87,7 @@ Bundle 'scrooloose/syntastic'
 " on/off. When the plugin is present, will always activate the relative 
 " numbering every time you go to normal mode. Author refuses to add a setting 
 " to avoid that)
-" Bundle 'myusuf3/numbers.vim'
+Bundle 'myusuf3/numbers.vim'
 
 " Plugins from vim-scripts repos:
 
@@ -338,22 +338,22 @@ nmap ,o :RopeFindOccurrences<CR>
 " most of them not documented because I'm not sure how they work
 " (docs aren't good, had to do a lot of trial and error to make 
 " it play nice)
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_ignore_case = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_auto_select = 1
-let g:neocomplcache_enable_fuzzy_completion = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_fuzzy_completion_start_length = 1
-let g:neocomplcache_auto_completion_start_length = 1
-let g:neocomplcache_auto_completion_start_length = 1
-let g:neocomplcache_manual_completion_start_length = 1
-let g:neocomplcache_min_keyword_length = 1
-let g:neocomplcache_min_syntax_length = 1
+"let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_ignore_case = 1
+"let g:neocomplcache_enable_smart_case = 1
+"let g:neocomplcache_enable_auto_select = 1
+"let g:neocomplcache_enable_fuzzy_completion = 1
+"let g:neocomplcache_enable_camel_case_completion = 1
+"let g:neocomplcache_enable_underbar_completion = 1
+"let g:neocomplcache_fuzzy_completion_start_length = 1
+"let g:neocomplcache_auto_completion_start_length = 1
+"let g:neocomplcache_auto_completion_start_length = 1
+"let g:neocomplcache_manual_completion_start_length = 1
+"let g:neocomplcache_min_keyword_length = 1
+"let g:neocomplcache_min_syntax_length = 1
 " complete with workds from any opened file
-let g:neocomplcache_same_filetype_lists = {}
-let g:neocomplcache_same_filetype_lists._ = '_'
+"let g:neocomplcache_same_filetype_lists = {}
+"let g:neocomplcache_same_filetype_lists._ = '_'
 
 " TabMan ------------------------------
 
@@ -408,7 +408,7 @@ let g:airline#extensions#whitespace#enabled = 0
 " to use fancy symbols for airline, uncomment the following lines and use a
 " patched font (more info on the README.rst)
 "if !exists('g:airline_symbols')
-"   let g:airline_symbols = {}
+   "let g:airline_symbols = {}
 "endif
 "let g:airline_left_sep = '⮀'
 "let g:airline_left_alt_sep = '⮁'
@@ -425,10 +425,10 @@ let g:EasyMotion_do_mapping = 1 " Disable default mappings
 " " Jump to anywhere you want with minimal keystrokes, with just one key
 " binding.
 " " `s{char}{label}`
-"nmap s <Plug>(easymotion-s)
+nmap s <Plug>(easymotion-s)
 
 " Turn on case sensitive feature
-"let g:EasyMotion_smartcase = 1
+let g:EasyMotion_smartcase = 1
 
 " JK motions: Line motions
 "map <Leader>j <Plug>(easymotion-j)
@@ -440,3 +440,4 @@ map <Leader>hs :noh<cr>
 " YouCompleteMe 
 let g:ycm_autoclose_preview_window_after_completion=1
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
