@@ -104,7 +104,7 @@ Bundle 'YankRing.vim'
 Bundle 'Lokaltog/vim-easymotion'
 
 " YouCompleteMe
-Bundle 'Valloric/YouCompleteMe' 
+"Bundle 'Valloric/YouCompleteMe' 
 
 " ============================================================================
 " Install plugins the first time vim runs
@@ -302,6 +302,11 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.pyc$\|\.pyo$',
   \ }
 
+" Emmet ------------------------------
+let g:user_emmet_leader_key='<C-I>'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
 " Syntastic ------------------------------
 
 " show list of errors and warnings on the current file
@@ -438,6 +443,11 @@ let g:EasyMotion_smartcase = 1
 map <Leader>hs :noh<cr>
 
 " YouCompleteMe 
-let g:ycm_autoclose_preview_window_after_completion=1
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"let g:ycm_autoclose_preview_window_after_completion=1
+"nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+" Use jj to emulate <Esc>
+"
+" Autocomplete for CSS and HTML
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
