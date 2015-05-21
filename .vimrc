@@ -31,7 +31,7 @@ Bundle 'gmarik/vundle'
 " Plugins from github repos:
 
 " Python and PHP Debugger
-"Bundle 'fisadev/vim-debug.vim'
+Bundle 'fisadev/vim-debug.vim'
 " Better file browser
 Bundle 'scrooloose/nerdtree'
 " Code commenter
@@ -67,6 +67,7 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'klen/python-mode'
 " Better autocompletion
 "Bundle 'Shougo/neocomplcache.vim'
+
 " Snippets manager (SnipMate), dependencies, and snippets repo
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
@@ -104,8 +105,21 @@ Bundle 'YankRing.vim'
 Bundle 'Lokaltog/vim-easymotion'
 
 " YouCompleteMe
-"Bundle 'Valloric/YouCompleteMe' 
+Bundle 'Valloric/YouCompleteMe' 
 
+"Term for Vim
+Bundle "marijnh/tern_for_vim"
+
+" Music Macro Language
+Bundle 'stephencelis/vim-mml'
+
+" Jade 
+Bundle 'digitaltoad/vim-jade'
+
+" SCSS
+Plugin 'cakebaker/scss-syntax.vim'
+
+"
 " ============================================================================
 " Install plugins the first time vim runs
 
@@ -302,11 +316,6 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.pyc$\|\.pyo$',
   \ }
 
-" Emmet ------------------------------
-let g:user_emmet_leader_key='<C-I>'
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-
 " Syntastic ------------------------------
 
 " show list of errors and warnings on the current file
@@ -356,7 +365,7 @@ nmap ,o :RopeFindOccurrences<CR>
 "let g:neocomplcache_manual_completion_start_length = 1
 "let g:neocomplcache_min_keyword_length = 1
 "let g:neocomplcache_min_syntax_length = 1
-" complete with workds from any opened file
+"" complete with workds from any opened file
 "let g:neocomplcache_same_filetype_lists = {}
 "let g:neocomplcache_same_filetype_lists._ = '_'
 
@@ -413,7 +422,7 @@ let g:airline#extensions#whitespace#enabled = 0
 " to use fancy symbols for airline, uncomment the following lines and use a
 " patched font (more info on the README.rst)
 "if !exists('g:airline_symbols')
-   "let g:airline_symbols = {}
+"   let g:airline_symbols = {}
 "endif
 "let g:airline_left_sep = '⮀'
 "let g:airline_left_alt_sep = '⮁'
@@ -443,11 +452,8 @@ let g:EasyMotion_smartcase = 1
 map <Leader>hs :noh<cr>
 
 " YouCompleteMe 
-"let g:ycm_autoclose_preview_window_after_completion=1
-"nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_autoclose_preview_window_after_completion=1
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" Use jj to emulate <Esc>
 "
-" Autocomplete for CSS and HTML
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType mml nnoremap <leader>m :MmlMake<cr>
