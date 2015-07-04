@@ -18,6 +18,11 @@ endif
 
 filetype off
 
+
+" TernJS
+let g:tern_map_keys=1
+let g:tern_show_argument_hints='on_hold'
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -34,6 +39,7 @@ Bundle 'gmarik/vundle'
 Bundle 'fisadev/vim-debug.vim'
 " Better file browser
 Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
 " Code commenter
 Bundle 'scrooloose/nerdcommenter'
 " Class/module browser
@@ -59,7 +65,7 @@ Bundle 'fisadev/FixedTaskList.vim'
 " Surround
 Bundle 'tpope/vim-surround'
 " Autoclose
-Bundle 'Townk/vim-autoclose'
+"Bundle 'Townk/vim-autoclose'
 " Indent text object
 Bundle 'michaeljsmith/vim-indent-object'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
@@ -110,16 +116,21 @@ Bundle 'Valloric/YouCompleteMe'
 "Term for Vim
 Bundle "marijnh/tern_for_vim"
 
-" Music Macro Language
-Bundle 'stephencelis/vim-mml'
-
 " Jade 
 Bundle 'digitaltoad/vim-jade'
 
 " SCSS
 Plugin 'cakebaker/scss-syntax.vim'
 
-"
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-session'
+
+Bundle 'Raimondi/delimitMate'
+
+Plugin 'MattesGroeger/vim-bookmarks'
+
+Plugin 'Chiel92/vim-autoformat'
+
 " ============================================================================
 " Install plugins the first time vim runs
 
@@ -137,6 +148,8 @@ endif
 filetype plugin on
 filetype indent on
 
+let mapleader = "\<tab>"
+
 " tabs and spaces handling
 set expandtab
 set tabstop=4
@@ -144,9 +157,9 @@ set softtabstop=4
 set shiftwidth=4
 
 " tab length exceptions on some file types
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+"autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+"autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
+"autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " always show status bar
 set ls=2
@@ -248,18 +261,22 @@ endif
 " Tagbar ----------------------------- 
 
 " toggle tagbar display
-map <F4> :TagbarToggle<CR>
-" autofocus on tagbar open
-let g:tagbar_autofocus = 1
+"map <F4> :TagbarToggle<CR>
+"" autofocus on tagbar open
+"let g:tagbar_autofocus = 1
 
 " NERDTree ----------------------------- 
 
 " toggle nerdtree display
-map <F3> :NERDTreeToggle<CR>
+map <F3> :NERDTreeTabsToggle<CR>
 " open nerdtree with the current file selected
-nmap ,t :NERDTreeFind<CR>
+nnoremap ,t :NERDTreeFind<CR><c-w><c-w>:NERDTreeFocus<CR>
+"nmap ,t :NERDTreeTabsFind<CR>
 " don;t show these file types
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
+let NERDTreeChDirMode = 2 
+let g:nerdtree_tabs_open_on_gui_startup = 0
+let g:nerdtree_tabs_autofind = 1
 
 
 " Tasklist ------------------------------
@@ -293,6 +310,8 @@ nmap ,G :CtrlPBufTagAll<CR>
 nmap ,f :CtrlPLine<CR>
 " recent files finder mapping
 nmap ,m :CtrlPMRUFiles<CR>
+" buffer finder mapping
+nmap ,b :CtrlPBuffer<CR>
 " commands finder mapping
 nmap ,c :CtrlPCmdPalette<CR>
 " to be able to call CtrlP with default search text
@@ -417,12 +436,13 @@ let g:choosewin_overlay_enable = 1
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'bubblegum'
-let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " to use fancy symbols for airline, uncomment the following lines and use a
 " patched font (more info on the README.rst)
 "if !exists('g:airline_symbols')
-"   let g:airline_symbols = {}
+   "let g:airline_symbols = {}
 "endif
 "let g:airline_left_sep = '⮀'
 "let g:airline_left_alt_sep = '⮁'
@@ -449,11 +469,58 @@ let g:EasyMotion_smartcase = 1
 "map <Leader>k <Plug>(easymotion-k)
 
 " Clear search result highlight 
-map <Leader>hs :noh<cr>
+map <Leader>' :noh<cr>
 
 " YouCompleteMe 
 let g:ycm_autoclose_preview_window_after_completion=1
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-"
-autocmd FileType mml nnoremap <leader>m :MmlMake<cr>
+"" switch between numbered buffers
+"nnoremap <F4> :buffers<CR>:buffer<Space>
+"set switchbuf=usetab
+
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <leader>bt :enew<cr>
+
+" Move to the next buffer
+nmap <leader>] :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>[ :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl ::buffers<CR>:buffer<Space>
+
+
+" Vim Session
+let g:session_autoload = 1
+let g:session_autosave = 1
+let g:session_autosave_periodic = 1
+let g:session_lock_enabled = 0
+set sessionoptions-=help
+set sessionoptions-=options
+
+"Vim Bookmark
+nmap <Leader>i <Plug>BookmarkAnnotate
+nmap <Leader>a <Plug>BookmarkShowAll
+nmap <Leader>j <Plug>BookmarkNext
+nmap <Leader>k <Plug>BookmarkPrev
+nmap <Leader>c <Plug>BookmarkClear
+nmap <Leader>x <Plug>BookmarkClearAll
+
+
+highlight SignColumn ctermbg=NONE ctermfg=160 guibg=NONE guifg=Red
+highlight BookmarkSign ctermbg=NONE ctermfg=160
+highlight BookmarkLine ctermbg=194 ctermfg=NONE
+let g:bookmark_sign = '♥'
+let g:bookmark_highlight_lines = 1
+
