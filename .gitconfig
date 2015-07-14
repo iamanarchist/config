@@ -16,3 +16,5 @@
 	bra = branch
 	ph = push
 	pl = pull
+[push]
+	default = matching
