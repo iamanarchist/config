@@ -1,10 +1,18 @@
+[core]
+	excludesfile = /Users/sdk/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 [user]
-	email = mark@zillians.com
-    name = Mu Chi Sung 
+	name = 
+	email = 
 [alias]
-    st = status
-    ci = commit -v
-    pl = pull
-    ph = push
-    bra = branch
-    co = checkout
+	co = checkout
+	ci = commit
+	st = status
+	bra = branch
+	ph = push
+	pl = pull
