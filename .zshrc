@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/sdk/.oh-my-zsh
+export ZSH=/home/sdk/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -81,7 +81,7 @@ alias g="git"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/sdk/app/google-cloud-sdk/path.zsh.inc'
+#source '/Users/sdk/app/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables bash completion for gcloud.
-source '/Users/sdk/app/google-cloud-sdk/completion.zsh.inc'
+#source '/Users/sdk/app/google-cloud-sdk/completion.zsh.inc'
