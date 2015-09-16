@@ -70,8 +70,8 @@ ${memeasyfree}","color":"\#FF9933","separator":true,"separator_block_width":6},\
 #{"full_text":"ⓑ","color":"\#888888","separator":false,"separator_block_width":6},\
 #{"full_text":"${battery_percent}%","color":"\#EEEEEE","separator":false},\
 #Volume:
-{"full_text":" VOL","color":"\#AF005F               ","separator":false,"separator_block_width":6},\
-{"full_text":"${execi 1 amixer sget Master,0 | egrep -o '([0-9]+%|\[(on|off)\])' | sed ':a;N;$!ba;s/\n/ /g'}","color":"\#808080","separator":true},\
+#{"full_text":" VOL","color":"\#AF005F               ","separator":false,"separator_block_width":6},\
+#{"full_text":"${execi 1 amixer sget Master,0 | egrep -o '([0-9]+%|\[(on|off)\])' | sed ':a;N;$!ba;s/\n/ /g'}","color":"\#808080","separator":true},\
 #Date
 {"full_text":" DATE","color":"\#B58900","separator":false,"separator_block_width":6},\
 {"full_text":"${time %a %b %d %Y}","color":"\#808080","separator":false},\
