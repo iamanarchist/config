@@ -1,14 +1,19 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/sdk/.oh-my-zsh
+  export ZSH=/home/sdk/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
+#ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -49,8 +54,15 @@ plugins=(git autojump)
 
 # User configuration
 
-export PATH="/usr/local/go/bin:/opt/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
+export PATH="/opt/hisi-linux-nptl/arm-hisiv100-linux/target/bin:$PATH" 
+#export PATH="/opt/hisi-linux/x86-arm/arm-hisiv200-linux/target/bin:$PATH" 
+#export PATH="/opt/hisi-linux/x86-arm/arm-hisiv300-linux/target/bin:$PATH" 
+#export PATH="/opt/hisi-linux/x86-arm/arm-hisiv400-linux/target/bin:$PATH" 
+export PATH="$HOME/app:$HOME/Android/Sdk/platform-tools:$PATH"
+
+export ANDROID_HOME=$HOME/Android/Sdk
 
 source $ZSH/oh-my-zsh.sh
 
@@ -76,12 +88,33 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias g="git"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias g="git"
+alias b="byobu"
+alias m="make"
+
+function gssh() {
+    gcloud compute --project "wise-baton-146204" ssh $1 --ssh-flag="-A"
+}
+
+function gexec() {
+    gcloud compute --project "wise-baton-146204" ssh $1 --command $2 --ssh-flag="-A"
+}
+
+function gscp() {
+    gcloud compute --project "wise-baton-146204" scp $1 $2
+}
+
+export NVM_DIR="/home/sdk/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
 
 # The next line updates PATH for the Google Cloud SDK.
-#source '/Users/sdk/app/google-cloud-sdk/path.zsh.inc'
+if [ -f '/home/sdk/dl/google-cloud-sdk/path.zsh.inc' ]; then source '/home/sdk/dl/google-cloud-sdk/path.zsh.inc'; fi
 
-# The next line enables bash completion for gcloud.
-#source '/Users/sdk/app/google-cloud-sdk/completion.zsh.inc'
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/sdk/dl/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/sdk/dl/google-cloud-sdk/completion.zsh.inc'; fi

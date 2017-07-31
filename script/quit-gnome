@@ -1,0 +1,2 @@
+#!/bin/sh
+loginctl kill-session $(gdbus call -y -d org.freedesktop.login1 -o /org/freedesktop/login1 -m org.freedesktop.login1.Manager.GetSessionByPID $$ | sed -nr '/.*session\/(.{,2}).*/s//\1/p')
